@@ -22,7 +22,9 @@ export default function Conversation({ conversation, lastIdx }) {
         </div>
 
         <div className="flex flex-col flex-1">
-          <p className="font-bold text-gray-200">{conversation.fullName}</p>
+          <p className="font-bold lg:text-lg xl:text-xl 2xl:text-2xl text-gray-200">
+            {conversation.fullName}
+          </p>
         </div>
       </div>
 

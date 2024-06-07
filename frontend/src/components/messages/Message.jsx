@@ -22,10 +22,12 @@ export default function Message({ message }) {
         </div>
       </div>
 
-      <div className={`chat-bubble text-white ${bubbleBgColor} ${shakeClass}`}>
+      <div  
+        className={`chat-bubble xl:text-lg 2xl:text-2xl text-white ${bubbleBgColor} ${shakeClass}`}
+      >
         {message.message}
       </div>
-      <div className="chat-footer text-white opacity-50 text-xs flex gap-1 items-center">
+      <div className="chat-footer text-white opacity-50 text-xs xl:text-sm 2xl:text-xl flex gap-1 items-center">
         {formattedTime}
       </div>
     </div>
