@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import GenderSelect from "./GenderSelect";
 import { useState } from "react";
 import useSignup from "../../hooks/useSignup";
-import { IoMdEye } from "react-icons/io";
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
 export default function SignUp() {
   const [inputs, setInputs] = useState({
@@ -72,7 +72,7 @@ export default function SignUp() {
               className="absolute text-xl top-3 hover:text-sky-500 end-0 flex items-center pe-3"
               onClick={() => setShow({ ...show, password: !show.password })}
             >
-              <IoMdEye />
+              {show.password ? <IoMdEye /> : <IoMdEyeOff />}
             </button>
           </div>
           <div className="pb-2 relative">
@@ -92,7 +92,7 @@ export default function SignUp() {
                 setShow({ ...show, confirmPassword: !show.confirmPassword })
               }
             >
-              <IoMdEye />
+              {show.confirmPassword ? <IoMdEye /> : <IoMdEyeOff />}
             </button>
           </div>
           <GenderSelect

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { IoMdEye } from "react-icons/io";
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { useLogin } from "../../hooks/useLogin";
 
 export default function Login() {
@@ -27,7 +27,9 @@ export default function Login() {
           />
           <h1 className="text-4xl font-semibold text-center text-gray-200">
             Welcome to{" "}
-            <span className="text-5xl text-indigo-600 font-bold">ChatGiDay</span>
+            <span className="text-5xl text-indigo-600 font-bold">
+              ChatGiDay
+            </span>
           </h1>
         </div>
 
@@ -58,7 +60,7 @@ export default function Login() {
               className="absolute text-xl top-3 hover:text-sky-500 end-0 flex items-center pe-3"
               onClick={() => setShowPassword(!showPassword)}
             >
-              <IoMdEye />
+              {showPassword ? <IoMdEye /> : <IoMdEyeOff />}
             </button>
           </div>
           <Link
