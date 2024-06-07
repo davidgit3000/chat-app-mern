@@ -1,5 +1,6 @@
 import Conversation from "../models/conversation.model.js";
 import Message from "../models/message.model.js";
+import { getReceiverSocketID, io } from "../socket/socket.js";
 
 export const sendMessage = async (req, res) => {
   try {
@@ -24,7 +25,7 @@ export const sendMessage = async (req, res) => {
     });
 
     await newMessage.save();
-    console.log("New message saved:", newMessage);
+    // console.log("New message saved:", newMessage);
 
     // Use findByIdAndUpdate with $push to append the new message ID to the messages array
     conversation = await Conversation.findByIdAndUpdate(
@@ -33,7 +34,15 @@ export const sendMessage = async (req, res) => {
       { new: true, useFindAndModify: false }
     ).populate("messages");
 
-    console.log("Updated conversation:", conversation);
+    await newMessage.save();
+
+    // console.log("Updated conversation:", conversation);
+    // SocketIO Functionality
+    const receiverSocketId = getReceiverSocketID(receiverId);
+    if (receiverSocketId) {
+      // io.to(<socketId>).emit() used to send to one specific client
+      io.to(receiverSocketId).emit("newMessage", newMessage);
+    }
 
     res.status(201).json(newMessage);
   } catch (error) {
