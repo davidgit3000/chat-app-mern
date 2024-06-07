@@ -1,4 +1,20 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
+import { IoMdEye } from "react-icons/io";
+import { useLogin } from "../../hooks/useLogin";
+
 export default function Login() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { loading, login } = useLogin();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await login(username, password);
+  };
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
       <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
@@ -11,7 +27,7 @@ export default function Login() {
           />
           <h1 className="text-4xl font-semibold text-center text-gray-200">
             Welcome to{" "}
-            <span className="text-5xl text-indigo-600 font-bold">Chatto</span>
+            <span className="text-5xl text-indigo-600 font-bold">ChatGiDay</span>
           </h1>
         </div>
 
@@ -19,31 +35,49 @@ export default function Login() {
           Login
         </h2>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="py-4">
             <input
               type="text"
               placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               className="w-full input input-bordered h-10"
             />
           </div>
-          <div>
+          <div className="relative">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full input input-bordered h-10"
             />
+            <button
+              type="button"
+              className="absolute text-xl top-3 hover:text-sky-500 end-0 flex items-center pe-3"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              <IoMdEye />
+            </button>
           </div>
-          <a
-            href="#"
+          <Link
+            to="/signup"
             className="text-md text-black hover:underline hover:text-blue-600 mt-2 inline-block"
           >
             Don't have an account?
-          </a>
+          </Link>
 
           <div>
-            <button className="btn btn-block btn-md text-lg hover:bg-slate-700 mt-2">
-              Login
+            <button
+              className="btn btn-block btn-md text-lg hover:bg-slate-700 mt-2"
+              disabled={loading}
+            >
+              {loading ? (
+                <span className="loading loading-spinner"></span>
+              ) : (
+                "Login"
+              )}
             </button>
           </div>
         </form>
