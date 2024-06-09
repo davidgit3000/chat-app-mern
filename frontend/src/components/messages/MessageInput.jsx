@@ -49,7 +49,7 @@ export default function MessageInput() {
 
         <button
           type="button"
-          className=" absolute inset-y-0 end-10 flex items-center px-3 text-white"
+          className="hover:bg-slate-500 hover:rounded-full absolute inset-y-0 end-10 flex items-center px-3 text-white"
           onClick={() => setOpen((prev) => !prev)}
         >
           <BsEmojiSmile className="w-5 h-5" />
@@ -60,7 +60,7 @@ export default function MessageInput() {
 
         <button
           type="submit"
-          className="absolute inset-y-0 end-0 flex items-center px-3 text-white"
+          className="hover:bg-slate-500 hover:rounded-full absolute inset-y-0 end-0 flex items-center px-3 text-white"
         >
           {loading ? (
             <span className="loading loading-spinner"></span>
