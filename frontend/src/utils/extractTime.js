@@ -1,8 +1,8 @@
 export function extractTime(dateString) {
   const date = new Date(dateString);
   const day = padZero(date.getDate());
-  const month = padZero(date.getMonth());
-  const year = padZero(date.getFullYear());
+  const month = date.toLocaleDateString("default", { month: "2-digit" }); // Full month name
+  const year = date.getFullYear();
   const hours = padZero(date.getHours());
   const minutes = padZero(date.getMinutes());
   return `${month}/${day}/${year}, ${hours}:${minutes}`;
