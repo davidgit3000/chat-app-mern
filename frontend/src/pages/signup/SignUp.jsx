@@ -99,12 +99,11 @@ export default function SignUp() {
             onSelectChange={handleGenderSelect}
             selectedGender={inputs.gender}
           />
+          <span className="text-md text-black">Already have an account? </span>
           <Link
-            className="text-sm text-white hover:underline hover:text-blue-600 inline-block"
+            className="text-md underline text-white hover:underline hover:text-blue-600 inline-block"
             to="/login"
-          >
-            Already have an account?
-          </Link>
+          >Login here</Link>
           <div>
             <button
               className="btn btn-block btn-md text-lg mt-2 border border-slate-700 hover:text-gray-500"
