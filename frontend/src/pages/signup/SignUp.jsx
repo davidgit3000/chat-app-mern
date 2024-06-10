@@ -100,7 +100,7 @@ export default function SignUp() {
             selectedGender={inputs.gender}
           />
           <Link
-            className="text-sm text-black hover:underline hover:text-blue-600 inline-block"
+            className="text-sm text-white hover:underline hover:text-blue-600 inline-block"
             to="/login"
           >
             Already have an account?

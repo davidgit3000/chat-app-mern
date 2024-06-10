@@ -63,11 +63,12 @@ export default function Login() {
               {showPassword ? <IoMdEye /> : <IoMdEyeOff />}
             </button>
           </div>
+          <span className="text-md text-black">Don't have an account? </span>
           <Link
             to="/signup"
-            className="text-md text-black hover:underline hover:text-blue-600 mt-2 inline-block"
+            className="text-md underline text-white hover:underline hover:text-blue-600 mt-2 inline-block"
           >
-            Don't have an account?
+            Create one
           </Link>
 
           <div>
